@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 const divStyles = css`
   height: 200px;
+
   width: 200px;
   margin: 30px;
   padding: 20px;
@@ -16,19 +17,22 @@ const imageStyles = css`
   height: 50px;
   width: 50px;
 `;
-
 function App() {
   const [data, setData] = useState([]);
   const [top, setTop] = useState([]);
   const [bottom, setBottom] = useState([]);
 
+  // just use fetch
+
   useEffect(() => {
-    axios
-      .get('https://api.memegen.link/templates')
-      .then((result) => {
-        setData(result.data);
-      })
-      .catch((err) => console.error(err));
+    const sendGetRequest = async () => {
+      const data = await axios
+        .get('https://api.memegen.link/templates')
+        .then((result) => {
+          setData(result.data);
+        })
+        .catch((err) => console.error(err));
+    };
   }, []);
 
   const options = [];
@@ -41,30 +45,22 @@ function App() {
   }
 
   function DisplayImages() {
-    const images = options.map(function (props) {
+    const images = options.map(function (options) {
       return (
         <img
           css={imageStyles}
-          alt={props.label}
-          key={props.value}
-          src={props.icon}
+          alt={options.label}
+          key={options.value}
+          src={options.icon}
         />
       );
     });
     return images;
   }
 
-  function GenerateMeme() {
-    return null;
-  }
-
   return (
     <>
       <DisplayImages />
-      <select>
-        <option>Choose Template</option>
-      </select>
-
       <div css={divStyles}>
         <h2>Templates</h2>
         <button>Choose Meme</button>
@@ -73,23 +69,11 @@ function App() {
         <h2>Create your own meme</h2>
         <label>
           Top Text:
-          <input
-            css={inputStyles}
-            value={top}
-            onChange={(event) => {
-              setTop(event.currentTarget.value);
-            }}
-          />
+          <input css={inputStyles} value={top}></input>
         </label>
         <label>
           Bottom Text:
-          <input
-            css={inputStyles}
-            value={bottom}
-            onChange={(event) => {
-              setBottom(event.currentTarget.value);
-            }}
-          />
+          <input css={inputStyles} value={bottom}></input>
         </label>
         <button>Create Meme</button>
         <button>Download Meme</button>
