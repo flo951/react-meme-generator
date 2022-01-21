@@ -30,12 +30,6 @@ const divButtons = css`
   display: flex;
   flex-direction: column;
 `;
-const button = css`
-  width: 8rem;
-  margin: 10px;
-  border: 1px black;
-  border-radius: 5px;
-`;
 
 function App() {
   const [templates, setTemplates] = useState([]);
@@ -57,6 +51,7 @@ function App() {
 
   const memes = templates.map((e) => ({
     id: e.id,
+    name: e.id,
   }));
 
   const memeList = [];
@@ -64,22 +59,22 @@ function App() {
     memeList.push({ id: element, name: element });
   });
   console.log(memeList);
-  export default memeList
-  // <Select options={ technologyList } />
-  function selectMeme() {
-    return (
-      <select>
-        {memeList.forEach((element) => {
-          <option value={element.id}>{element.name}</option>;
-        })}
-      </select>
-    );
-  }
+
+  function handleTemplate() {}
 
   return (
     <div css={divStyles}>
       <h2>Create your own meme</h2>
-
+      <select value="dropdown" onChange={handleTemplate}>
+        {memeList.map((item) => {
+          return (
+            // needs onChange handler
+            <option key={item.id} value={item.name}>
+              {item.name.name}
+            </option>
+          );
+        })}
+      </select>
       <div>
         <img
           css={imageStyles}
@@ -119,9 +114,9 @@ function App() {
         />
       </label>
       <div css={divButtons}>
-        <button css={button}>Create Meme</button>
+        <button>Create Meme</button>
 
-        <button css={button}>Download Meme</button>
+        <button>Download Meme</button>
       </div>
     </div>
   );
