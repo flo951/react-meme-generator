@@ -19,7 +19,8 @@ const divStyles = css`
   padding: 2rem;
   background-color: #a6d6ed;
   border-radius: 10px;
-  width: 50vw;
+  width: 90vw;
+  height: 90vh;
 `;
 const inputStyles = css`
   margin: 5px;
