@@ -32,12 +32,12 @@ const divInputs = css`
   flex-direction: column;
 `;
 const imageStyles = css`
-  height: 80%;
-  width: 80%;
-  margin: 3rem;
+  height: 12rem;
+  width: 12rem;
+  margin: 10px;
 `;
 const selecStyles = css`
-  width: 15vw;
+  width: 12rem;
 `;
 const divButtons = css`
   display: flex;
