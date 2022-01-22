@@ -59,7 +59,7 @@ function App() {
     fetch('https://api.memegen.link/templates')
       .then((res) => res.json())
       .then((data) => setTemplates(data))
-      .catch((err) => console.log('error'));
+      .catch((error) => console.log(error));
   }
 
   useEffect(() => {
