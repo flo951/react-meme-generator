@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import { saveAs } from 'file-saver';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
@@ -31,6 +31,10 @@ const divButtons = css`
   flex-direction: column;
 `;
 
+const buttons = css`
+  margin: 10px;
+`;
+
 function App() {
   const [templates, setTemplates] = useState([]);
   const [top, setTop] = useState('milk');
@@ -51,26 +55,30 @@ function App() {
 
   const memes = templates.map((e) => ({
     id: e.id,
-    name: e.id,
+    name: e.name,
   }));
 
-  const memeList = [];
-  memes.forEach(function (element) {
-    memeList.push({ id: element, name: element });
-  });
-  console.log(memeList);
+  // const memeList = [];
+  // memes.forEach(function (element) {
+  //   memeList.push({ id: element, name: element });
+  // });
+  // console.log(memeList);
 
-  function handleTemplate() {}
+  const handleMeme = (e) => setMeme(e.target.value);
+
+  // function handleChange(e) {
+  //   setState({ value: e.target.value });
+  // }
 
   return (
     <div css={divStyles}>
       <h2>Create your own meme</h2>
-      <select value="dropdown" onChange={handleTemplate}>
-        {memeList.map((item) => {
+      <select value="dropdown" onChange={handleMeme}>
+        {memes.map((item) => {
           return (
             // needs onChange handler
-            <option key={item.id} value={item.name}>
-              {item.name.name}
+            <option key={item.name} value={item.id}>
+              {item.name}
             </option>
           );
         })}
@@ -114,9 +122,9 @@ function App() {
         />
       </label>
       <div css={divButtons}>
-        <button>Create Meme</button>
+        <button css={buttons}>Create Meme</button>
 
-        <button>Download Meme</button>
+        <button css={buttons}>Download Meme</button>
       </div>
     </div>
   );
