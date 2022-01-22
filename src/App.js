@@ -69,7 +69,8 @@ function App() {
   // function handleChange(e) {
   //   setState({ value: e.target.value });
   // }
-
+  const memeDownload =
+    temp.slice(0, -7) + meme + '/' + top + '/' + bottom + '.png';
   return (
     <div css={divStyles}>
       <h2>Create your own meme</h2>
@@ -84,11 +85,7 @@ function App() {
         })}
       </select>
       <div>
-        <img
-          css={imageStyles}
-          alt="template"
-          src={temp.slice(0, -7) + meme + '/' + top + '/' + bottom + '.png'}
-        />
+        <img css={imageStyles} alt="meme-template" src={memeDownload} />
       </div>
 
       <label>
@@ -124,7 +121,9 @@ function App() {
       <div css={divButtons}>
         <button css={buttons}>Create Meme</button>
 
-        <button css={buttons}>Download Meme</button>
+        <button css={buttons} onClick={() => saveAs(memeDownload, 'meme.jpg')}>
+          Download
+        </button>
       </div>
     </div>
   );
