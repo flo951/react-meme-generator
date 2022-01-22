@@ -82,6 +82,7 @@ function App() {
 
     const selectBox = document.getElementById('dropdown');
     const selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    console.log(selectedValue);
   };
   // function handleChange(e) {
   //   setState({ value: e.target.value });
