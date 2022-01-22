@@ -34,7 +34,7 @@ const divInputs = css`
 const imageStyles = css`
   height: 80%;
   width: 80%;
-  margin: 2rem;
+  margin: 3rem;
 `;
 const selecStyles = css`
   width: 15vw;
@@ -77,8 +77,12 @@ function App() {
   // });
   // console.log(memeList);
 
-  const handleMeme = (e) => setMeme(e.target.value);
+  const handleMeme = (e) => {
+    setMeme(e.target.value);
 
+    const selectBox = document.getElementById('dropdown');
+    const selectedValue = selectBox.options[selectBox.selectedIndex].value;
+  };
   // function handleChange(e) {
   //   setState({ value: e.target.value });
   // }
@@ -88,7 +92,7 @@ function App() {
     <div css={divContainer}>
       <div css={divStyles}>
         <h2>Create your own meme</h2>
-        <select css={selecStyles} value="dropdown" onChange={handleMeme}>
+        <select css={selecStyles} id="dropdown" onChange={handleMeme}>
           <option key="template" value="meme-template">
             Select Meme Template
           </option>
