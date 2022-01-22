@@ -3,28 +3,41 @@ import { saveAs } from 'file-saver';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
+const divContainer = css`
+  display: flex;
+
+  justify-content: center;
+`;
+
 const divStyles = css`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   flex-direction: column;
+
   align-items: center;
-  margin: 30px;
-  padding: 20px;
+  margin: 2rem;
+  padding: 2rem;
   background-color: #a6d6ed;
   border-radius: 10px;
-  width: 50%;
+  width: 50vw;
 `;
 const inputStyles = css`
   margin: 5px;
   padding: 5px;
 `;
+const divInputs = css`
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+`;
 const imageStyles = css`
-  height: 250px;
-  width: 250px;
-  margin: 10px;
+  height: 80%;
+  width: 80%;
+  margin: 2rem;
 `;
 const selecStyles = css`
-  width: 200px;
+  width: 15vw;
 `;
 const divButtons = css`
   display: flex;
@@ -72,58 +85,73 @@ function App() {
   const memeDownload =
     temp.slice(0, -7) + meme + '/' + top + '/' + bottom + '.png';
   return (
-    <div css={divStyles}>
-      <h2>Create your own meme</h2>
-      <select value="dropdown" onChange={handleMeme}>
-        {memes.map((item) => {
-          return (
-            // needs onChange handler
-            <option key={item.name} value={item.id}>
-              {item.name}
-            </option>
-          );
-        })}
-      </select>
-      <div>
-        <img css={imageStyles} alt="meme-template" src={memeDownload} />
-      </div>
-
-      <label>
-        Top Text:
-        <input
-          css={inputStyles}
-          value={top}
-          onChange={(event) => {
-            setTop(event.currentTarget.value);
-          }}
-        />
-      </label>
-      <label>
-        Bottom Text:
-        <input
-          css={inputStyles}
-          value={bottom}
-          onChange={(event) => {
-            setBottom(event.currentTarget.value);
-          }}
-        />
-      </label>
-      <label>
-        Meme:
-        <input
-          css={inputStyles}
-          value={meme}
-          onChange={(event) => {
-            setMeme(event.currentTarget.value);
-          }}
-        />
-      </label>
-      <div css={divButtons}>
-        <button css={buttons}>Create Meme</button>
-
-        <button css={buttons} onClick={() => saveAs(memeDownload, 'meme.jpg')}>
-          Download
-        </button>
+    <div css={divContainer}>
+      <div css={divStyles}>
+        <h2>Create your own meme</h2>
+        <select css={selecStyles} value="dropdown" onChange={handleMeme}>
+          <option key="template" value="meme-template">
+            Select Meme Template
+          </option>
+          {memes.map((item) => {
+            return (
+              // needs onChange handler
+              <option key={item.name} value={item.id}>
+                {item.name}
+              </option>
+            );
+          })}
+        </select>
+        <div>
+          <img
+            css={imageStyles}
+            data-test-id="meme-image"
+            alt="meme-template"
+            src={memeDownload}
+          />
+        </div>
+        <div css={divInputs}>
+          <label>
+            Top Text
+            <br />
+            <input
+              css={inputStyles}
+              value={top}
+              onChange={(event) => {
+                setTop(event.currentTarget.value);
+              }}
+            />
+          </label>
+          <label>
+            Bottom Text
+            <br />
+            <input
+              css={inputStyles}
+              value={bottom}
+              onChange={(event) => {
+                setBottom(event.currentTarget.value);
+              }}
+            />
+          </label>
+          <label>
+            Meme
+            <br />
+            <input
+              css={inputStyles}
+              value={meme}
+              onChange={(event) => {
+                setMeme(event.currentTarget.value);
+              }}
+            />
+          </label>
+        </div>
+        <div css={divButtons}>
+          <button
+            css={buttons}
+            onClick={() => saveAs(memeDownload, 'meme.jpg')}
+          >
+            Download
+          </button>
+        </div>
       </div>
     </div>
   );
