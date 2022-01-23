@@ -38,7 +38,7 @@ const imageStyles = css`
   margin: 10px;
 `;
 const selecStyles = css`
-  width: 12rem;
+  width: 14rem;
 `;
 const divButtons = css`
   display: flex;
@@ -46,7 +46,11 @@ const divButtons = css`
 `;
 
 const buttons = css`
+  height: 3rem;
+  width: 5rem;
   margin: 10px;
+  border-radius: 10px;
+  background-color: white;
 `;
 
 function App() {
@@ -117,7 +121,7 @@ function App() {
         </div>
         <div css={divInputs}>
           <label>
-            Top Text
+            Top text
             <br />
             <input
               css={inputStyles}
@@ -128,7 +132,7 @@ function App() {
             />
           </label>
           <label>
-            Bottom Text
+            Bottom text
             <br />
             <input
               css={inputStyles}
@@ -147,6 +151,7 @@ function App() {
               onChange={(event) => {
                 setMeme(event.currentTarget.value);
               }}
+              readOnly
             />
           </label>
         </div>
