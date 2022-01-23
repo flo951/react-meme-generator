@@ -143,7 +143,7 @@ function App() {
             />
           </label>
           <label>
-            Meme
+            Meme template
             <br />
             <input
               css={inputStyles}
@@ -151,7 +151,6 @@ function App() {
               onChange={(event) => {
                 setMeme(event.currentTarget.value);
               }}
-              readOnly
             />
           </label>
         </div>
