@@ -96,11 +96,14 @@ function App() {
   // function handleChange(e) {
   //   setState({ value: e.target.value });
   // }
+
+  // add ternary to display meme even when input is empty
+
   const memeDownload =
-    // add ternary to display meme even when input is empty
     top && bottom
       ? temp.slice(0, -7) + meme + '/' + top + '/' + bottom + '.png'
       : temp.slice(0, -7) + meme + '.png';
+
   return (
     <div css={divContainer}>
       <div css={divStyles}>
