@@ -5,19 +5,18 @@ import { css } from '@emotion/react';
 
 const divContainer = css`
   display: flex;
-
   justify-content: center;
+  color: white;
 `;
 
 const divStyles = css`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   flex-direction: column;
-
   align-items: center;
   margin: 2rem;
   padding: 2rem;
-  background-color: #a6d6ed;
+  background-color: #303030;
   border-radius: 10px;
   width: 90vw;
   height: 90vh;
@@ -25,16 +24,17 @@ const divStyles = css`
 const inputStyles = css`
   margin: 5px;
   padding: 5px;
+  width: 15rem;
 `;
 const divInputs = css`
   display: flex;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
   flex-direction: column;
 `;
 const imageStyles = css`
-  height: 12rem;
-  width: 12rem;
+  height: 15rem;
+  width: 15rem;
   margin: 10px;
 `;
 const selecStyles = css`
@@ -46,11 +46,17 @@ const divButtons = css`
 `;
 
 const buttons = css`
-  height: 3rem;
-  width: 5rem;
+  background-color: #9a66e2;
+  padding: 20px 20px;
   margin: 10px;
-  border-radius: 10px;
-  background-color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  :hover {
+    background-color: white;
+    color: black;
+    transition: all 0.7s ease-out;
+  }
 `;
 
 function App() {
@@ -60,16 +66,14 @@ function App() {
   const [meme, setMeme] = useState('badchoice');
   const temp = 'https://api.memegen.link/images/aag.png';
 
-  function fetchTemplates() {
-    fetch('https://api.memegen.link/templates')
-      .then((res) => res.json())
-      .then((data) => setTemplates(data))
-      .catch((error) => console.log(error));
-  }
-
   useEffect(() => {
-    fetchTemplates();
+    fetch('https://api.memegen.link/templates')
+      .then((r) => r.json())
+      .then(setTemplates)
+      // then((data) => setTemplates)
+      .catch((error) => console.log(error));
   }, []);
+  console.log(templates);
 
   const memes = templates.map((e) => ({
     id: e.id,
@@ -93,7 +97,10 @@ function App() {
   //   setState({ value: e.target.value });
   // }
   const memeDownload =
-    temp.slice(0, -7) + meme + '/' + top + '/' + bottom + '.png';
+    // add ternary to display meme even when input is empty
+    top && bottom
+      ? temp.slice(0, -7) + meme + '/' + top + '/' + bottom + '.png'
+      : temp.slice(0, -7) + meme + '.png';
   return (
     <div css={divContainer}>
       <div css={divStyles}>
