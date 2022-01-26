@@ -1,3 +1,4 @@
+import './App.css';
 import { useEffect, useState } from 'react';
 import { saveAs } from 'file-saver';
 /** @jsxImportSource @emotion/react */
@@ -7,6 +8,8 @@ const divContainer = css`
   display: flex;
   justify-content: center;
   color: white;
+  background-color: #303030;
+  width: 100vw;
 `;
 
 const divStyles = css`
@@ -18,8 +21,10 @@ const divStyles = css`
   padding: 2rem;
   background-color: #303030;
   border-radius: 10px;
-  width: 90vw;
-  height: 90vh;
+  height: 100vh;
+  h3 {
+    margin-bottom: 20px;
+  }
 `;
 const inputStyles = css`
   margin: 5px;
@@ -38,7 +43,7 @@ const imageStyles = css`
   margin: 10px;
 `;
 const selecStyles = css`
-  width: 14rem;
+  width: 15rem;
 `;
 const divButtons = css`
   display: flex;
@@ -51,6 +56,7 @@ const buttons = css`
   margin: 10px;
   border: none;
   border-radius: 30px;
+  width: 15rem;
   cursor: pointer;
   :hover {
     background-color: white;
@@ -130,7 +136,7 @@ function App() {
   return (
     <div css={divContainer}>
       <div css={divStyles}>
-        <h2>Create your own meme</h2>
+        <h3>Create your own meme</h3>
         <select css={selecStyles} id="dropdown" onChange={handleMeme}>
           <option key="template" value="meme-template">
             Select Meme Template
