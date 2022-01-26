@@ -107,10 +107,17 @@ function App() {
 
   // add ternary to display meme even when input is empty
 
-  const memeDownload =
-    top && bottom
-      ? temp.slice(0, -7) + meme + '/' + top + '/' + bottom + '.png'
-      : temp.slice(0, -7) + meme + '.png';
+  let memeDownload = temp.slice(0, -7) + meme + '.png';
+  const topempty = '_';
+
+  if (top && bottom) {
+    memeDownload = temp.slice(0, -7) + meme + '/' + top + '/' + bottom + '.png';
+  } else if (top && !bottom) {
+    memeDownload = temp.slice(0, -7) + meme + '/' + top + '.png';
+  } else if (bottom && !top) {
+    memeDownload =
+      temp.slice(0, -7) + meme + '/' + topempty + '/' + bottom + '.png';
+  }
 
   // const replaceSpace = () => {
   //   if (top.indexOf(' ') > -1) {
