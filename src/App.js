@@ -61,9 +61,9 @@ const buttons = css`
 
 function App() {
   const [templates, setTemplates] = useState([]);
-  const [top, setTop] = useState('milk');
-  const [bottom, setBottom] = useState('no good');
-  const [meme, setMeme] = useState('badchoice');
+  const [top, setTop] = useState('');
+  const [bottom, setBottom] = useState('');
+  const [meme, setMeme] = useState('ants');
   const temp = 'https://api.memegen.link/images/aag.png';
 
   useEffect(() => {
@@ -89,6 +89,14 @@ function App() {
   const handleMeme = (e) => {
     setMeme(e.target.value);
 
+    // const handleSpace = e => {
+    //   let text = e.target.value;
+
+    //   text = text.replace(/[\D]+/g, " ");
+
+    //   this.setTop({ value: text });
+    // };
+
     const selectBox = document.getElementById('dropdown');
     const selectedValue = selectBox.options[selectBox.selectedIndex].value;
     console.log(selectedValue);
@@ -103,6 +111,14 @@ function App() {
     top && bottom
       ? temp.slice(0, -7) + meme + '/' + top + '/' + bottom + '.png'
       : temp.slice(0, -7) + meme + '.png';
+
+  // const replaceSpace = () => {
+  //   if (top.indexOf(' ') > -1) {
+  //     let string = '';
+  //     string = top.replace(/ /g, '_');
+  //     setTop(top);
+  //   }
+  // };
 
   return (
     <div css={divContainer}>
