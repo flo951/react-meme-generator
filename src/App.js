@@ -10,6 +10,7 @@ const divContainer = css`
   color: white;
   background-color: #303030;
   width: 100vw;
+  height: 100vh;
 `;
 
 const divStyles = css`
@@ -21,7 +22,7 @@ const divStyles = css`
   padding: 2rem;
   background-color: #303030;
   border-radius: 10px;
-  height: 100vh;
+
   h3 {
     margin-bottom: 24px;
   }
