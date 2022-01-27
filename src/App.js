@@ -23,13 +23,13 @@ const divStyles = css`
   border-radius: 10px;
   height: 100vh;
   h3 {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 `;
 const inputStyles = css`
-  margin: 5px;
-  padding: 5px;
-  width: 15rem;
+  margin: 6px;
+  padding: 6px;
+  width: 14rem;
 `;
 const divInputs = css`
   display: flex;
@@ -38,30 +38,34 @@ const divInputs = css`
   flex-direction: column;
 `;
 const imageStyles = css`
-  height: 15rem;
-  width: 15rem;
-  margin: 10px;
+  height: 14rem;
+  width: 14rem;
+  margin: 12px;
 `;
 const selecStyles = css`
-  width: 15rem;
+  width: 14rem;
 `;
 const divButtons = css`
   display: flex;
   flex-direction: column;
+  font-size: 40px;
 `;
 
 const buttons = css`
   background-color: #9a66e2;
-  padding: 20px 20px;
-  margin: 10px;
+  padding: 12px 12px;
+  margin: 12px;
   border: none;
-  border-radius: 30px;
-  width: 15rem;
+  border-radius: 28px;
+  width: 14rem;
   cursor: pointer;
   :hover {
     background-color: white;
     color: black;
     transition: all 0.7s ease-out;
+  }
+  h2 {
+    font-size: 28px;
   }
 `;
 
@@ -198,7 +202,7 @@ function App() {
             css={buttons}
             onClick={() => saveAs(memeDownload, 'meme.jpg')}
           >
-            Download
+            <h2>⬇︎ Download</h2>
           </button>
         </div>
       </div>
