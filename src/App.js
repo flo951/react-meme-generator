@@ -81,42 +81,17 @@ function App() {
     fetch('https://api.memegen.link/templates')
       .then((r) => r.json())
       .then(setTemplates)
-      // then((data) => setTemplates)
       .catch((error) => console.log(error));
   }, []);
-  console.log(templates);
 
   const memes = templates.map((e) => ({
     id: e.id,
     name: e.name,
   }));
 
-  // const memeList = [];
-  // memes.forEach(function (element) {
-  //   memeList.push({ id: element, name: element });
-  // });
-  // console.log(memeList);
-
   const handleMeme = (e) => {
     setMeme(e.target.value);
-
-    // const handleSpace = e => {
-    //   let text = e.target.value;
-
-    //   text = text.replace(/[\D]+/g, " ");
-
-    //   this.setTop({ value: text });
-    // };
-
-    const selectBox = document.getElementById('dropdown');
-    const selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    console.log(selectedValue);
   };
-  // function handleChange(e) {
-  //   setState({ value: e.target.value });
-  // }
-
-  // add ternary to display meme even when input is empty
 
   let memeDownload = temp.slice(0, -7) + meme + '.png';
   const topempty = '_';
@@ -130,14 +105,6 @@ function App() {
       temp.slice(0, -7) + meme + '/' + topempty + '/' + bottom + '.png';
   }
 
-  // const replaceSpace = () => {
-  //   if (top.indexOf(' ') > -1) {
-  //     let string = '';
-  //     string = top.replace(/ /g, '_');
-  //     setTop(top);
-  //   }
-  // };
-
   return (
     <div css={divContainer}>
       <div css={divStyles}>
@@ -148,7 +115,6 @@ function App() {
           </option>
           {memes.map((item) => {
             return (
-              // needs onChange handler
               <option key={item.name} value={item.id}>
                 {item.name}
               </option>
