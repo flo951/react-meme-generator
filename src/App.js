@@ -58,9 +58,8 @@ const buttons = css`
   width: 22rem;
   cursor: pointer;
   :hover {
-    background-color: white;
-    color: black;
-    transition: all 0.7s ease-out;
+    color: white;
+    transition: all 0.3s ease-out;
   }
   h3 {
     font-size: 28px;
