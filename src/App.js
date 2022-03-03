@@ -40,7 +40,7 @@ const imageStyles = css`
 `;
 const selecStyles = css`
   width: 22rem;
-
+  padding: 8px;
   margin-bottom: 1rem;
 `;
 const divButtons = css`
