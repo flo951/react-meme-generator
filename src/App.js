@@ -7,30 +7,25 @@ import { css } from '@emotion/react';
 const divContainer = css`
   display: flex;
   justify-content: center;
-  color: white;
-  background-color: #303030;
-  width: 100vw;
-  height: 100vh;
+  h2 {
+    margin-bottom: 1rem;
+  }
 `;
 
 const divStyles = css`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem;
-  padding: 2rem;
-  background-color: #303030;
-  border-radius: 10px;
+  height: 100vh;
 
-  h3 {
-    margin-bottom: 24px;
-  }
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  flex-direction: column;
 `;
 const inputStyles = css`
   margin: 6px;
   padding: 6px;
-  width: 14rem;
+  width: 22rem;
+  margin-bottom: 24px;
 `;
 const divInputs = css`
   display: flex;
@@ -39,12 +34,14 @@ const divInputs = css`
   flex-direction: column;
 `;
 const imageStyles = css`
-  height: 14rem;
-  width: 14rem;
+  height: 20rem;
+  width: 22rem;
   margin: 12px;
 `;
 const selecStyles = css`
-  width: 14rem;
+  width: 22rem;
+
+  margin-bottom: 1rem;
 `;
 const divButtons = css`
   display: flex;
@@ -58,14 +55,14 @@ const buttons = css`
   margin: 12px;
   border: none;
   border-radius: 28px;
-  width: 14rem;
+  width: 22rem;
   cursor: pointer;
   :hover {
     background-color: white;
     color: black;
     transition: all 0.7s ease-out;
   }
-  h2 {
+  h3 {
     font-size: 28px;
   }
 `;
@@ -108,14 +105,14 @@ function App() {
   return (
     <div css={divContainer}>
       <div css={divStyles}>
-        <h3>Create your own meme</h3>
+        <h2>Create your own meme</h2>
         <select css={selecStyles} id="dropdown" onChange={handleMeme}>
           <option key="template" value="meme-template">
             Select Meme Template
           </option>
           {memes.map((item) => {
             return (
-              <option key={item.name} value={item.id}>
+              <option key={`meme-${item.name}`} value={item.id}>
                 {item.name}
               </option>
             );
@@ -169,7 +166,7 @@ function App() {
             css={buttons}
             onClick={() => saveAs(memeDownload, 'meme.jpg')}
           >
-            <h2>⬇︎ Download</h2>
+            <h3>Download</h3>
           </button>
         </div>
       </div>
