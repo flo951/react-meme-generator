@@ -7,46 +7,36 @@ import { css } from '@emotion/react';
 const divContainer = css`
   display: flex;
   justify-content: center;
+
   h2 {
     margin-bottom: 1rem;
   }
 `;
 
 const divStyles = css`
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  height: 100vh;
-
+  margin-top: 24px;
   display: flex;
-  align-items: center;
-  padding: 2rem;
+  justify-content: center;
+  width: 350px;
+
   flex-direction: column;
 `;
 const inputStyles = css`
-  margin: 6px;
+  margin: 12px 0px;
   padding: 6px;
-  width: 22rem;
+
+  width: 100%;
   margin-bottom: 24px;
 `;
-const divInputs = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
+
 const imageStyles = css`
   height: 20rem;
-  width: 22rem;
-  margin: 12px;
+  width: 350px;
+  margin: 12px 0px;
 `;
 const selecStyles = css`
-  width: 22rem;
   padding: 8px;
   margin-bottom: 1rem;
-`;
-const divButtons = css`
-  display: flex;
-  flex-direction: column;
-  font-size: 40px;
 `;
 
 const buttons = css`
@@ -55,7 +45,7 @@ const buttons = css`
   margin: 12px;
   border: none;
   border-radius: 28px;
-  width: 22rem;
+
   cursor: pointer;
   :hover {
     color: white;
@@ -71,6 +61,7 @@ function App() {
   const [top, setTop] = useState('');
   const [bottom, setBottom] = useState('');
   const [meme, setMeme] = useState('ants');
+
   const temp = 'https://api.memegen.link/images/aag.png';
 
   useEffect(() => {
@@ -125,7 +116,7 @@ function App() {
             src={memeDownload}
           />
         </div>
-        <div css={divInputs}>
+        <div>
           <label>
             Top text
             <br />
@@ -160,14 +151,10 @@ function App() {
             />
           </label>
         </div>
-        <div css={divButtons}>
-          <button
-            css={buttons}
-            onClick={() => saveAs(memeDownload, 'meme.jpg')}
-          >
-            <h3>Download</h3>
-          </button>
-        </div>
+
+        <button css={buttons} onClick={() => saveAs(memeDownload, 'meme.jpg')}>
+          <h3>Download</h3>
+        </button>
       </div>
     </div>
   );
