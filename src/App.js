@@ -41,11 +41,11 @@ const selecStyles = css`
 
 const buttons = css`
   background-color: #9a66e2;
-  padding: 12px 12px;
+  padding: 12px 6px;
   margin: 12px;
   border: none;
   border-radius: 28px;
-
+  font-size: 24px;
   cursor: pointer;
   :hover {
     color: white;
@@ -153,7 +153,7 @@ function App() {
         </div>
 
         <button css={buttons} onClick={() => saveAs(memeDownload, 'meme.jpg')}>
-          <h3>Download</h3>
+          Download
         </button>
       </div>
     </div>
