@@ -55,9 +55,12 @@ const buttons = css`
     font-size: 28px;
   }
 `;
-
+type Meme = {
+  id: string;
+  name: string;
+};
 function App() {
-  const [templates, setTemplates] = useState([]);
+  const [templates, setTemplates] = useState<Meme[]>([]);
   const [top, setTop] = useState('');
   const [bottom, setBottom] = useState('');
   const [meme, setMeme] = useState('ants');
@@ -70,8 +73,8 @@ function App() {
       .then(setTemplates)
       .catch((error) => console.log(error));
   }, []);
-
-  const memes = templates.map((templateMeme) => ({
+  console.log(templates);
+  const memes = templates.map((templateMeme: Meme) => ({
     id: templateMeme.id,
     name: templateMeme.name,
   }));
