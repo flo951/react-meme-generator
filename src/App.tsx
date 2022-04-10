@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { saveAs } from 'file-saver';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
@@ -71,14 +71,10 @@ function App() {
       .catch((error) => console.log(error));
   }, []);
 
-  const memes = templates.map((e) => ({
-    id: e.id,
-    name: e.name,
+  const memes = templates.map((templateMeme) => ({
+    id: templateMeme.id,
+    name: templateMeme.name,
   }));
-
-  const handleMeme = (e) => {
-    setMeme(e.target.value);
-  };
 
   let memeDownload = temp.slice(0, -7) + meme + '.png';
   const topempty = '_';
@@ -96,7 +92,13 @@ function App() {
     <div css={divContainer}>
       <div css={divStyles}>
         <h2>Create your own meme</h2>
-        <select css={selecStyles} id="dropdown" onChange={handleMeme}>
+        <select
+          css={selecStyles}
+          id="dropdown"
+          onChange={(e) => {
+            setMeme(e.target.value);
+          }}
+        >
           <option key="template" value="meme-template">
             Select Meme Template
           </option>
